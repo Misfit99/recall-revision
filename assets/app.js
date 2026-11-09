@@ -1,5 +1,5 @@
 /* ============================================================
-   Recall — revision library (vanilla JS, no build step)
+   Cram Jam — revision library (vanilla JS, no build step)
    ============================================================ */
 (function () {
   "use strict";
@@ -147,7 +147,7 @@
 
   function viewHome() {
     setCrumbs([]);
-    document.title = "Recall — Revision Library";
+    document.title = "Cram Jam — Revision Library";
     const cards = allCards();
     const known = cards.filter((x) => cardStatus(x.key) === "ok").length;
     const missed = cards.filter((x) => cardStatus(x.key) === "miss").length;
@@ -159,7 +159,7 @@
     app.innerHTML = `
       <section class="hero fade-in">
         <div class="eyebrow">Revision library</div>
-        <h1>Read it once.<br/><span class="grad">Recall it forever.</span></h1>
+        <h1>Cram hard.<br/><span class="grad">Jam harder.</span></h1>
         <p>Short, interview-ready cards with traps to avoid and lines to say out loud. Cover the answer, say it, reveal, and mark what you missed.</p>
         <div class="hero-actions">
           ${resume ? `<a class="btn btn-primary" href="#/s/${resume.subject}/${resume.id}">Continue ${esc(resume.label)} →</a>`
@@ -206,7 +206,7 @@
     const s = subjectById(sid);
     if (!s) return viewNotFound();
     setCrumbs([{ label: "Library", href: "#/" }, { label: s.title }]);
-    document.title = `${s.title} — Recall`;
+    document.title = `${s.title} — Cram Jam`;
     const units = unitsOf(s);
     const p = subjectProgress(s);
     app.innerHTML = `
@@ -257,7 +257,7 @@
     store.data.prefs.lastUnit = unitKey(u);
     store.save();
     setCrumbs([{ label: "Library", href: "#/" }, { label: s.title, href: `#/s/${sid}` }, { label: `${u.label} · ${u.title}` }]);
-    document.title = `${u.label}: ${u.title} — Recall`;
+    document.title = `${u.label}: ${u.title} — Cram Jam`;
     const units = unitsOf(s);
     const idx = units.indexOf(u);
     const prev = units[idx - 1], next = units[idx + 1];
@@ -367,7 +367,7 @@
     const u = R.units[`${sid}/${uid}`];
     if (!s || !u) return viewNotFound();
     setCrumbs([{ label: "Library", href: "#/" }, { label: s.title, href: `#/s/${sid}` }, { label: u.label, href: `#/s/${sid}/${uid}` }, { label: "Quick check" }]);
-    document.title = `Quick check: ${u.label} — Recall`;
+    document.title = `Quick check: ${u.label} — Cram Jam`;
     const qs = u.quiz;
     const res = new Array(qs.length).fill(null);
     let i = 0, shown = false;
@@ -445,7 +445,7 @@
   /* ---------- review queue ---------- */
   function viewReview() {
     setCrumbs([{ label: "Library", href: "#/" }, { label: "Review" }]);
-    document.title = "Review — Recall";
+    document.title = "Review — Cram Jam";
     const items = allCards().filter((x) => cardStatus(x.key) === "miss");
     const rows = (list) => list.map(({ s, u, c, key }) => `
       <a class="review-item" href="#/s/${s.id}/${u.id}/c/${encodeURIComponent(c.id)}">

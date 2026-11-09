@@ -1,4 +1,4 @@
-# Recall — revision library
+# Cram Jam — revision library
 
 A static website (no build step, no dependencies) for revision cards.
 Core Java is in it now (Days 1, 2, 3, 4A, 4B, 5 and 6: 79 cards and 78 quick-check questions), and it is set up for more subjects.
